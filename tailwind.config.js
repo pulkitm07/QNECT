@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#0D0D0D',
-        cream:  '#FAF7F0',
+        canvas: 'var(--color-canvas)',
+        cream:  'var(--color-cream)',
         brand: {
-          DEFAULT: '#F5A623',
+          DEFAULT: 'var(--color-brand)',
           dark:    '#D98E1A',
           light:   '#FDF1DB',
         },

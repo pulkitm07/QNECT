@@ -109,12 +109,38 @@ export default function Landing() {
     }),
   }
 
+  const [theme, setTheme] = useState(() => document.documentElement.classList.contains('theme-light') ? 'light' : 'dark')
+
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('theme-light')
+      setTheme('light')
+    } else {
+      document.documentElement.classList.remove('theme-light')
+      setTheme('dark')
+    }
+  }
+
   return (
-    <main className="flex flex-col items-center justify-center flex-1 px-5 py-16 min-h-dvh" style={{ background: '#0D0D0D' }}>
+    <main className="flex flex-col items-center justify-center flex-1 px-5 py-16 min-h-dvh">
+      
+      {/* Theme Toggle */}
+      <button 
+        onClick={toggleTheme}
+        className="absolute top-6 right-6 p-2 rounded-full border"
+        style={{ borderColor: 'var(--color-border)', color: 'var(--color-cream)', background: 'var(--color-surface)' }}
+        title="Toggle Theme"
+      >
+        {theme === 'dark' ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        )}
+      </button>
 
       {/* Hero */}
       <div className="mb-2 text-center">
-        <h1 className="text-6xl font-display font-bold tracking-tight" style={{ color: '#FAF7F0', letterSpacing: '-2px' }}>
+        <h1 className="text-6xl font-display font-bold tracking-tight" style={{ color: 'var(--color-cream)', letterSpacing: '-2px' }}>
           {prefersRM ? 'Qnect' : (
             <>
               {brand.slice(0, 1)}
@@ -147,7 +173,7 @@ export default function Landing() {
             {role.shape}
             <div className="relative z-10">
               <div className="mb-4">{role.icon}</div>
-              <div className="font-display font-semibold text-base" style={{ color: '#FAF7F0' }}>{role.label}</div>
+              <div className="font-display font-semibold text-base" style={{ color: 'var(--color-cream)' }}>{role.label}</div>
               <div className="text-xs mt-1" style={{ color: '#6b7280' }}>{role.sub}</div>
               {role.badge && (
                 <div
@@ -169,7 +195,7 @@ export default function Landing() {
       {/* Live ticker */}
       <div
         className="mt-14 w-full max-w-lg rounded-2xl py-3 px-5 flex flex-wrap items-center justify-center gap-4 text-xs"
-        style={{ background: '#141414', border: '1px solid #1f2937', color: '#6b7280' }}
+        style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: '#6b7280' }}
       >
         <span>
           <span style={{ color: '#F5A623', fontWeight: 700 }}><AnimCounter target={127} /></span> guests served today

@@ -8,8 +8,11 @@ import { AuthProvider, useAuth } from './context/AuthContext.jsx'
 const Landing         = lazy(() => import('./views/Landing.jsx'))
 const JoinForm        = lazy(() => import('./views/customer/JoinForm.jsx'))
 const QueueStatus     = lazy(() => import('./views/customer/QueueStatus.jsx'))
+const RestaurantList  = lazy(() => import('./views/customer/RestaurantList.jsx'))
+const RestaurantDetail= lazy(() => import('./views/customer/RestaurantDetail.jsx'))
 const Dashboard       = lazy(() => import('./views/staff/Dashboard.jsx'))
 const Attendance      = lazy(() => import('./views/staff/Attendance.jsx'))
+const Analytics       = lazy(() => import('./views/staff/Analytics.jsx'))
 const DeliveryCheckIn = lazy(() => import('./views/delivery/CheckIn.jsx'))
 const DeliveryStatus  = lazy(() => import('./views/delivery/PickupStatus.jsx'))
 const LoginScreen     = lazy(() => import('./views/LoginScreen.jsx'))
@@ -65,6 +68,8 @@ export default function App() {
 
                   {/* Public routes */}
                   <Route path="/"                element={<PageWrapper><Landing /></PageWrapper>} />
+                  <Route path="/restaurants"     element={<PageWrapper><RestaurantList /></PageWrapper>} />
+                  <Route path="/restaurants/:id" element={<PageWrapper><RestaurantDetail /></PageWrapper>} />
                   <Route path="/customer"        element={<PageWrapper><JoinForm /></PageWrapper>} />
                   <Route path="/customer/status" element={<PageWrapper><QueueStatus /></PageWrapper>} />
 
@@ -86,6 +91,14 @@ export default function App() {
                     element={
                       <RequireAuth role="staff" loginPath="/staff/login">
                         <PageWrapper><Attendance /></PageWrapper>
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/staff/analytics"
+                    element={
+                      <RequireAuth role="staff" loginPath="/staff/login">
+                        <PageWrapper><Analytics /></PageWrapper>
                       </RequireAuth>
                     }
                   />

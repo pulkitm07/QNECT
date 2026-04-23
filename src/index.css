@@ -6,12 +6,32 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-canvas: #0D0D0D;
+    --color-surface: #141414;
+    --color-surface-hover: #1A1A1A;
+    --color-border: #1f2937;
+    --color-cream: #FAF7F0;
+    --color-brand: #F5A623;
+  }
+  .theme-light {
+    --color-canvas: #FAF7F0;
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F3F4F6;
+    --color-border: #e5e7eb;
+    --color-cream: #0D0D0D;
+    --color-brand: #F5A623;
+  }
+  
   * {
     box-sizing: border-box;
   }
   body {
-    @apply bg-canvas text-cream font-sans antialiased;
+    background-color: var(--color-canvas);
+    color: var(--color-cream);
+    @apply font-sans antialiased;
     min-height: 100dvh;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   body::before {
     content: "";
@@ -44,13 +64,18 @@
     @apply btn bg-staff text-white hover:bg-blue-700 shadow-staff/20;
   }
   .card {
-    @apply bg-[#141414] rounded-2xl border border-gray-800 p-4 shadow-sm relative overflow-hidden;
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    @apply rounded-2xl border p-4 shadow-sm relative overflow-hidden transition-colors duration-300;
   }
   .input-wrapper {
     @apply relative pt-4;
   }
   .input {
-    @apply w-full bg-[#1A1A1A] rounded-xl border border-gray-700 px-3.5 py-2.5 text-sm outline-none transition focus:border-brand focus:ring-1 focus:ring-brand text-cream;
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border);
+    color: var(--color-cream);
+    @apply w-full rounded-xl border px-3.5 py-2.5 text-sm outline-none transition focus:border-brand focus:ring-1 focus:ring-brand;
   }
   .input-label {
     @apply absolute left-3.5 text-gray-400 text-sm transition-all duration-200 pointer-events-none;
