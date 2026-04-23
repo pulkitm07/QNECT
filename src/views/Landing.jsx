@@ -7,7 +7,7 @@ const ROLES = [
     key:   'customer',
     label: 'Customer',
     sub:   'Join the queue remotely',
-    path:  '/customer',
+    path:  '/restaurants',
     badge: null,
     color: '#F5A623',
     icon: (
