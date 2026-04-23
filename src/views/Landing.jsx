@@ -8,6 +8,7 @@ const ROLES = [
     label: 'Customer',
     sub:   'Join the queue remotely',
     path:  '/customer',
+    badge: null,
     color: '#F5A623',
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -25,7 +26,8 @@ const ROLES = [
     key:   'staff',
     label: 'Staff',
     sub:   'Manage queue & attendance',
-    path:  '/staff',
+    path:  '/staff/login',
+    badge: 'Login required',
     color: '#60a5fa',
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -43,7 +45,8 @@ const ROLES = [
     key:   'delivery',
     label: 'Delivery',
     sub:   'Pickup check-in & token',
-    path:  '/delivery',
+    path:  '/delivery/login',
+    badge: 'Login required',
     color: '#f97316',
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -146,6 +149,18 @@ export default function Landing() {
               <div className="mb-4">{role.icon}</div>
               <div className="font-display font-semibold text-base" style={{ color: '#FAF7F0' }}>{role.label}</div>
               <div className="text-xs mt-1" style={{ color: '#6b7280' }}>{role.sub}</div>
+              {role.badge && (
+                <div
+                  className="inline-flex items-center gap-1 mt-2 px-2 py-0.5 rounded-full text-xs font-medium"
+                  style={{ background: `${role.color}18`, color: role.color, border: `1px solid ${role.color}30` }}
+                >
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <rect x="1" y="4" width="8" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+                    <path d="M3 4V3a2 2 0 014 0v1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                  {role.badge}
+                </div>
+              )}
             </div>
           </motion.button>
         ))}

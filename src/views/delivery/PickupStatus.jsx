@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useQueue } from '../../context/QueueContext.jsx'
 import { useToast } from '../../context/ToastContext.jsx'
+import { useAuth } from '../../context/AuthContext.jsx'
 import { updateDeliveryStep } from '../../lib/supabase.js'
 import StepTracker from '../../components/StepTracker.jsx'
 
 export default function PickupStatus() {
   const navigate     = useNavigate()
   const toast        = useToast()
+  const { logout }   = useAuth()
   const { state, dispatch } = useQueue()
   const delivery     = state.delivery
   const [copied, setCopied] = useState(false)
@@ -63,10 +65,23 @@ export default function PickupStatus() {
   return (
     <main className="flex flex-col flex-1 px-5 py-10 max-w-sm mx-auto w-full min-h-dvh">
 
-      <button onClick={() => navigate('/')} className="mb-8 flex items-center gap-2 text-sm" style={{ color: '#6b7280' }}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        Back
-      </button>
+      <div className="flex items-center justify-between mb-8">
+        <button onClick={() => navigate('/delivery')} className="flex items-center gap-2 text-sm" style={{ color: '#6b7280' }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Back
+        </button>
+        <button
+          onClick={() => { logout('delivery'); toast('Signed out ✓'); navigate('/') }}
+          title="Sign out"
+          style={{
+            padding: '6px 10px', borderRadius: 10, background: '#ef444415',
+            color: '#ef4444', border: '1px solid #ef444430', cursor: 'pointer',
+            fontSize: 12, fontWeight: 600,
+          }}
+        >
+          Sign Out
+        </button>
+      </div>
 
       <h1 className="text-2xl font-display font-bold mb-6" style={{ color: '#FAF7F0' }}>Pickup Status</h1>
 

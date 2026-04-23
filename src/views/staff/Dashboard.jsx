@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useQueue } from '../../context/QueueContext.jsx'
 import { useToast } from '../../context/ToastContext.jsx'
+import { useAuth } from '../../context/AuthContext.jsx'
 import { updateQueueStatus } from '../../lib/supabase.js'
 
 /* ── Heatmap ── */
@@ -138,9 +139,16 @@ function SortableCard({ guest, onAdmit, onNotify, onCancel }) {
 export default function Dashboard() {
   const navigate = useNavigate()
   const toast    = useToast()
+  const { logout } = useAuth()
   const { state, dispatch, realtimeConnected } = useQueue()
   const { queue, seated, avgWait } = state
   const [bulkNotifying, setBulkNotifying] = useState(false)
+
+  const handleLogout = () => {
+    logout('staff')
+    toast('Signed out ✓')
+    navigate('/')
+  }
 
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }))
 
@@ -203,13 +211,27 @@ export default function Dashboard() {
             </span>
           </div>
         </div>
-        <button
-          onClick={() => navigate('/staff/attendance')}
-          className="btn-outline text-xs"
-          style={{ padding: '8px 14px' }}
-        >
-          Attendance →
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => navigate('/staff/attendance')}
+            className="btn-outline text-xs"
+            style={{ padding: '8px 14px' }}
+          >
+            Attendance →
+          </button>
+          <button
+            onClick={handleLogout}
+            title="Sign out"
+            style={{
+              padding: '8px 10px', borderRadius: 10, background: '#ef444415',
+              color: '#ef4444', border: '1px solid #ef444430', cursor: 'pointer', transition: 'all 0.15s',
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 2H3a1 1 0 00-1 1v10a1 1 0 001 1h3M10 11l3-3-3-3M13 8H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
