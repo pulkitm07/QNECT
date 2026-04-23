@@ -52,7 +52,7 @@
     @apply inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:-translate-y-0.5;
   }
   .btn-primary {
-    @apply btn bg-brand text-canvas hover:bg-brand-dark shadow-brand/20;
+    @apply btn bg-brand text-canvas hover:bg-brand-dark shadow-lg;
   }
   .btn-outline {
     @apply btn border border-gray-700 bg-canvas text-cream hover:bg-gray-800;

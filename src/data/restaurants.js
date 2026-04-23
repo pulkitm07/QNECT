@@ -23,9 +23,9 @@ export const RESTAURANTS = [
       { gradient: 'linear-gradient(135deg, #92400e, #78350f)', label: 'Outdoor Terrace' },
     ],
     reviews: [
-      { name: 'Priya M.', rating: 5, date: 'Apr 18', text: 'Absolutely stunning ambience and the butter chicken is the best I've had in the city. Staff was incredibly attentive.' },
-      { name: 'Rohan K.', rating: 4, date: 'Apr 12', text: 'Lovely place for a date night. The dal makhani is a must-try. Slightly pricey but worth every rupee.' },
-      { name: 'Sneha T.', rating: 5, date: 'Apr 5',  text: 'Celebrated my anniversary here. They surprised us with a complimentary dessert. 10/10 hospitality!' },
+      { name: 'Priya M.', rating: 5, date: 'Apr 18', text: "Absolutely stunning ambience and the butter chicken is the best I've had in the city. Staff was incredibly attentive." },
+      { name: 'Rohan K.', rating: 4, date: 'Apr 12', text: "Lovely place for a date night. The dal makhani is a must-try. Slightly pricey but worth every rupee." },
+      { name: 'Sneha T.', rating: 5, date: 'Apr 5',  text: "Celebrated my anniversary here. They surprised us with a complimentary dessert. 10/10 hospitality!" },
     ],
     avgKitchenMins: 25,
     tables: 12,
@@ -46,7 +46,7 @@ export const RESTAURANTS = [
     accentColor: '#4ade80',
     emoji: '🍣',
     description:
-      'Mumbai\'s most celebrated Japanese dining destination. Chef Hiroshi\'s omakase menu changes seasonally, featuring the freshest imports from Tsukiji market. A serene escape from the city's chaos.',
+      "Mumbai's most celebrated Japanese dining destination. Chef Hiroshi's omakase menu changes seasonally, featuring the freshest imports from Tsukiji market. A serene escape from the city's chaos.",
     photos: [
       { gradient: 'linear-gradient(135deg, #1e3a2f, #0a1f15)', label: 'Sushi Counter' },
       { gradient: 'linear-gradient(135deg, #134e33, #052e16)', label: 'Private Tatami Room' },

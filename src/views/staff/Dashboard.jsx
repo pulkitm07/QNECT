@@ -223,7 +223,7 @@ export default function Dashboard() {
             onClick={() => dispatch({ type: 'SELECT_RESTAURANT', id: r.id })}
             style={{
               whiteSpace: 'nowrap', padding: '6px 14px', borderRadius: 20, fontSize: 12,
-              fontWeight: 600, border: 'none', cursor: 'pointer',
+              fontWeight: 600, cursor: 'pointer',
               background: r.id === selectedRestId ? r.accentColor : 'var(--color-surface)',
               color: r.id === selectedRestId ? '#0D0D0D' : '#6b7280',
               border: `1px solid ${r.id === selectedRestId ? r.accentColor : 'var(--color-border)'}`,
